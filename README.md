@@ -10,4 +10,5 @@ The modifications of this repository are:
 Currently, opencv2.4 and Asus Xtion are used. And, only ros_rgbd is build. These can be easily modified from the CMakeLists.txt and launch file. 
 1. Run buld.sh
 2. catkin_make the package
+
 The topic which gives the camera pose is "camera_rgb_optical_frame".
