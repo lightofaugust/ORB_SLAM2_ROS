@@ -49,7 +49,6 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
   message_filters
   geometry_msgs
-  tf2_geometry_msgs
 )
 
 catkin_package(
