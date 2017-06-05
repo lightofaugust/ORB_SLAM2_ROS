@@ -40,6 +40,8 @@
 
 #include <mutex>
 
+//#include "TF2Interface.hpp"
+
 namespace ORB_SLAM2
 {
 
@@ -49,6 +51,8 @@ class Map;
 class LocalMapping;
 class LoopClosing;
 class System;
+//class TF2Interface;
+
 
 class Tracking
 {  
@@ -214,6 +218,10 @@ protected:
     bool mbRGB;
 
     list<MapPoint*> mlpTemporalPoints;
+
+    //ROS interface
+    //TF2Interface* mpRosTfInterface;
+
 };
 
 } //namespace ORB_SLAM

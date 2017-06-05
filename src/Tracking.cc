@@ -38,6 +38,7 @@
 #include<mutex>
 
 
+
 using namespace std;
 
 namespace ORB_SLAM2
@@ -145,6 +146,9 @@ Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer,
         else
             mDepthMapFactor = 1.0f/mDepthMapFactor;
     }
+
+    //mpRosTfInterface = new TF2Interface();
+    //mpRosTfInterface->LookupCameralinkToRgbOptical();
 
 }
 
@@ -432,7 +436,8 @@ void Tracking::Track()
                 mVelocity = cv::Mat();
 
             mpMapDrawer->SetCurrentCameraPose(mCurrentFrame.mTcw);
-
+                //cout << "mCurrentFrame.mTcw: " << endl << mCurrentFrame.mTcw << endl;
+                //mpRosTfInterface->PublishCurrentFrameTcw(mCurrentFrame.mTcw);
             // Clean VO matches
             for(int i=0; i<mCurrentFrame.N; i++)
             {
@@ -1509,7 +1514,7 @@ void Tracking::Reset()
     {
         mpViewer->RequestStop();
         while(!mpViewer->isStopped())
-            usleep(3000);
+            std::this_thread::sleep_for(std::chrono::microseconds(3000));
     }
 
     // Reset Local Mapping
